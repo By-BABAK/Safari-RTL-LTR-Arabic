@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>نصب‌کننده ابزار راست‌چین هوش مصنوعی</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #121212; color: #fff; text-align: center; padding: 50px; }
+        .box { background: #1e1e1e; padding: 30px; border-radius: 12px; display: inline-block; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .bookmark-btn {
+            background: #ff7a00; color: white; padding: 15px 25px; text-decoration: none;
+            font-weight: bold; border-radius: 8px; display: inline-block; margin: 20px 0;
+            cursor: grab;
+        }
+        p { color: #aaa; font-size: 14px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>فعال‌ساز هوشمند RTL</h2>
+        <p>برای نصب، دکمه زیر را بگیرید و به نوار بوک‌مارک‌های سافاری خود بکشید و رها کنید (Drag & Drop):</p>
+        
+        <!-- لینک بوک‌مارکلت -->
+        <a class="bookmark-btn" href="javascript:(function(){if(window.__rpRTL){window.__rpRTL.destroy();delete window.__rpRTL;return;}var R=/[\u0590-\u05FF\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFC]/,L=/[A-Za-z\u00C0-\u024F]/,P='p,li,h1,h2,h3,h4,h5,h6,blockquote,td,th,dd,dt,summary,figcaption,caption',C='ms-text-chunk,.text-chunk,.whitespace-pre-wrap,[data-testid=%22tweetText%22],[data-testid=%22user-message%22],message-content,.query-text,.font-claude-response',S='pre,code,kbd,samp,var,svg,math,script,style,ms-code-block,.code-block__code,.monaco-editor,.cm-editor,.CodeMirror,.ace_editor,.katex,.MathJax,mjx-container,nav,aside,[role=%22navigation%22]',I='textarea,input:not([type]),input[type=%22text%22],input[type=%22search%22]',sId='rp_safari_rtl_style',st=document.getElementById(sId);if(!st){st=document.createElement('style');st.id=sId;st.textContent='[data-rp-dir=%22rtl%22]{direction:rtl!important;text-align:right!important;unicode-bidi:isolate!important;}[data-rp-dir=%22ltr%22]{direction:ltr!important;text-align:left!important;unicode-bidi:isolate!important;}.rp-rtl-list{direction:rtl!important;padding-left:0!important;padding-right:1.6em!important;}.rp-input-auto{unicode-bidi:plaintext!important;text-align:start!important;}pre,code,ms-code-block,.code-block__code,.monaco-editor,.cm-editor,.katex,mjx-container{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important;}';(document.head||document.documentElement).appendChild(st);}var oMap=new WeakMap(),tEls=new Set(),tIns=new Set(),tLis=new Set();function dDir(t){if(!t)return null;var r=0,l=0,m=Math.min(t.length,1200);for(var i=0;i<m;i++){var c=t.charCodeAt(i);if((c>=65&&c<=90)||(c>=97&&c<=122)){l++;}else if(c>127){var ch=t[i];if(R.test(ch))r++;else if(L.test(ch))l++;}}var sum=r+l;if(!sum)return null;return(r/sum>=0.25||r>l)?'rtl':'ltr';}function sk(e){return!e||e.nodeType!==1||e.closest(S);}function pEl(e){if(sk(e))return;var tx=e.textContent||'';if(!R.test(tx))return;if(dDir(tx)==='rtl'){if(!oMap.has(e))oMap.set(e,e.getAttribute('dir'));e.setAttribute('dir','rtl');e.setAttribute('data-rp-dir','rtl');tEls.add(e);var ul=e.closest('ul,ol');if(ul&&!tLis.has(ul)){ul.classList.add('rp-rtl-list');tLis.add(ul);}}}function pIn(r){var ins=r.matches&&r.matches(I)?[r]:r.querySelectorAll(I);for(var i=0;i<ins.length;i++){var el=ins[i];if(el.closest('pre,code,.monaco-editor,.cm-editor'))continue;if(!oMap.has(el))oMap.set(el,el.getAttribute('dir'));el.setAttribute('dir','auto');el.classList.add('rp-input-auto');tIns.add(el);}}function sc(r){if(!r||r.nodeType!==1)return;pIn(r);var sl=P+','+C;if(r.matches&&r.matches(sl))pEl(r);var ch=r.querySelectorAll(sl);for(var i=0;i<ch.length;i++)pEl(ch[i]);}sc(document.body||document.documentElement);var raf=0,q=new Set(),ob=new MutationObserver(function(muts){for(var i=0;i<muts.length;i++){var m=muts[i];if(m.type==='childList'){for(var j=0;j<m.addedNodes.length;j++){var n=m.addedNodes[j];if(n.nodeType===1)q.add(n);else if(n.nodeType===3&&n.parentElement)q.add(n.parentElement);}}else if(m.type==='characterData'&&m.target.parentElement){q.add(m.target.parentElement);}}if(!raf){raf=requestAnimationFrame(function(){raf=0;q.forEach(function(n){sc(n);});q.clear();});}});ob.observe(document.documentElement,{childList:true,subtree:true,characterData:true});window.__rpRTL={destroy:function(){ob.disconnect();if(raf)cancelAnimationFrame(raf);if(st&&st.parentNode)st.parentNode.removeChild(st);tEls.forEach(function(e){var o=oMap.get(e);if(o===null||o===undefined)e.removeAttribute('dir');else e.setAttribute('dir',o);e.removeAttribute('data-rp-dir');});tIns.forEach(function(e){var o=oMap.get(e);if(o===null||o===undefined)e.removeAttribute('dir');else e.setAttribute('dir',o);e.classList.remove('rp-input-auto');});tLis.exec?tLis.forEach(function(e){e.classList.remove('rp-rtl-list');}):tLis.forEach(function(e){e.classList.remove('rp-rtl-list');});}};}());">🚀 RTL Fixer</a>
+        
+        <p style="font-size: 12px; margin-top: 15px;">در آیفون/آیپد: کافیست صفحه را بوک‌مارک کنید و آدرس آن را یک‌بار ویرایش کنید.</p>
+    </div>
+</body>
+</html>
