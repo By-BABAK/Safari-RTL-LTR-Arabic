@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RTL Fixer — Safari Bookmarklet</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #09090b;
+      color: #fafafa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(59,130,246,.12), transparent 32rem),
+        #09090b;
+    }
+    main {
+      width: min(720px, 100%);
+      border: 1px solid #27272a;
+      border-radius: 20px;
+      padding: clamp(24px, 6vw, 48px);
+      background: rgba(24,24,27,.92);
+      box-shadow: 0 24px 64px rgba(0,0,0,.35);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #3f3f46;
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: #a1a1aa;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 18px 0 10px; font-size: clamp(32px, 8vw, 52px); line-height: 1; }
+    .subtitle { margin: 0 0 28px; color: #a1a1aa; line-height: 1.7; }
+    .bookmarklet-wrap { margin: 28px 0 34px; text-align: center; }
+    .bookmarklet {
+      display: inline-block;
+      min-width: 260px;
+      border: 1px solid #60a5fa;
+      border-radius: 14px;
+      padding: 18px 28px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(37,99,235,.28);
+      transition: transform .15s ease, box-shadow .15s ease;
+      cursor: grab;
+    }
+    .bookmarklet:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(37,99,235,.38); }
+    .bookmarklet:active { cursor: grabbing; transform: translateY(0); }
+    .hint { margin: 12px 0 0; color: #71717a; font-size: 13px; }
+    section { border-top: 1px solid #27272a; padding-top: 24px; }
+    section + section { margin-top: 24px; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    ol { margin: 0; padding-inline-start: 22px; color: #d4d4d8; line-height: 1.65; }
+    li + li { margin-top: 8px; }
+    code {
+      border: 1px solid #3f3f46;
+      border-radius: 6px;
+      padding: 2px 6px;
+      background: #27272a;
+      color: #93c5fd;
+      direction: ltr;
+    }
+    footer { margin-top: 28px; color: #71717a; font-size: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="badge">Safari Bookmarklet</span>
+    <h1>RTL Fixer</h1>
+    <p class="subtitle">Automatically direction Persian and Arabic text on any webpage, while preserving code and math in LTR.</p>
+
+    <div class="bookmarklet-wrap">
+      <a class="bookmarklet"
+         id="bookmarklet"
+         href="javascript:(()=>{const w=window,n=w.__rtlFixer;if(n&&n.on){n.off();return}const s=new Map(),ex='pre,code,kbd,samp,textarea,input,table,math,[class*=katex],[class*=math],.hljs',ltr=(e)=>e.closest(ex),save=(e)=>{if(!s.has(e))s.set(e,{d:e.getAttribute('dir'),t:e.style.textAlign,u:e.style.unicodeBidi})},rtl=/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/,text=(e)=>Array.from(e.childNodes).filter(n=>n.nodeType===3).map(n=>n.nodeValue||'').join(''),restore=(e,r)=>{r.d===null?e.removeAttribute('dir'):e.setAttribute('dir',r.d);e.style.textAlign=r.t;e.style.unicodeBidi=r.u},fix=(e)=>{if(!(e instanceof Element))return;save(e);if(ltr(e)){e.setAttribute('dir','ltr');e.style.textAlign='left';e.style.unicodeBidi='isolate'}else{const t=text(e);if(rtl.test(t)){e.setAttribute('dir','rtl');e.style.textAlign='right';e.style.unicodeBidi='plaintext'}}},scan=()=>{document.querySelectorAll('p,li,td,th,span,a,button,label,h1,h2,h3,h4,h5,h6,div,article,section,blockquote').forEach(fix);document.querySelectorAll(ex).forEach(fix)},off=()=>{o.disconnect();s.forEach(restore);w.__rtlFixer=null},o=new MutationObserver(m=>{m.forEach(v=>{if(v.type==='characterData'){fix(v.target.parentElement)}else{if(v.target instanceof Element)fix(v.target);v.addedNodes.forEach(n=>{if(n instanceof Element){fix(n);n.querySelectorAll('*').forEach(fix)}})}})});w.__rtlFixer={on:true,off};scan();o.observe(document.documentElement,{subtree:true,childList:true,characterData:true});})();">
+        🚀 RTL Fixer
+      </a>
+      <p class="hint">Drag this button to Safari’s Favorites Bar</p>
+    </div>
+
+    <section>
+      <h2>Mac · Safari</h2>
+      <ol>
+        <li>Display the Favorites Bar with <code>⌘ + Shift + B</code>.</li>
+        <li>Drag <strong>🚀 RTL Fixer</strong> above into the Favorites Bar.</li>
+        <li>Open a webpage and click the bookmark to enable RTL Fixer. Click it again to turn it off.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>iPhone / iPad · Safari</h2>
+      <ol>
+        <li>Tap the <strong>Share</strong> button, then choose <strong>Add Bookmark</strong>.</li>
+        <li>Save it as <strong>RTL Fixer</strong>, then open <strong>Bookmarks</strong>.</li>
+        <li>Edit the bookmark and replace its address with the complete <strong>🚀 RTL Fixer</strong> URL from this page.</li>
+        <li>On any page, tap the <strong>bookmarks</strong> icon and select <strong>RTL Fixer</strong>. Tap it again to turn it off.</li>
+      </ol>
+    </section>
+
+    <footer>RTL for Persian/Arabic · LTR for code and formulas · Live chat streaming support</footer>
+  </main>
+</body>
+</html>
